@@ -25,7 +25,20 @@ namespace praktilinetoopohikonstruktsioonid
                         Alamfunktsioonid.KytuseKalkulaator();
                         break;
                     case 2:
-                        Alamfunktsioonid.HindaIsikukood();
+                        long ik = 0;
+                        string ikstring;
+                        try
+                        {
+                            Console.Write("Sisesta isikukood: ");
+                            ik = long.Parse(Console.ReadLine());
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine($"Vale andmetüüp: {e}");
+                        }
+                        ikstring = ik.ToString();
+                        var tulemus = Alamfunktsioonid.HindaIsikukood(ikstring);
+                        Console.WriteLine(tulemus);
                         break;
                     case 3:
                         Alamfunktsioonid.TaringuMang();

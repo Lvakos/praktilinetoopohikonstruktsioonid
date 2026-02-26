@@ -61,45 +61,47 @@ namespace praktilinetoopohikonstruktsioonid
             """);
         }
 
-        public static void HindaIsikukood()
+        public static string HindaIsikukood(string isikukood)
         {
-            long ik = 0;
-            string ikstring;
-            while (true)
+            string tulemus;
+            if (isikukood.Length != 11)
             {
+                tulemus = "Viga! Isikukood peab olema 11-kohaline.";
+                return tulemus;
+            }
+            else
+            {
+                string sugu;
+                char esimene = isikukood[0];
+
+                if (esimene == '1' || esimene == '3' || esimene == '5')
+                    sugu = "Mees";
+                else if (esimene == '2' || esimene == '4' || esimene == '6')
+                    sugu = "Naine";
+                else
+                    sugu = "Tundmatu";
+
+                string aasta;
+                string kuu;
+                string paev;
                 try
                 {
-                    Console.Write("Sisesta isikukood: ");
-                    ik = long.Parse(Console.ReadLine());
-                    break;
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine($"Vale andmetüüp: {e}");
+                    if (int.Parse(isikukood.Substring(1, 2)) < 100 && int.Parse(isikukood.Substring(1, 2)) >= 0)
+                    {
+                        aasta = isikukood.Substring(1, 2);
+                    }
+                    if (int.Parse(isikukood.Substring(3, 2)) < 13 && int.Parse(isikukood.Substring(3, 2)) > 0)
+                    {
+                        kuu = isikukood.Substring(3, 2);
+                    }
+                    if (int.Parse(isikukood.Substring(5, 2)) < 32 && int.Parse(isikukood.Substring(5, 2)) > 0)
+                    {
+                        paev = isikukood.Substring(5, 2);
+                    }
+                    tulemus = $"Oled {sugu}, sündinud {paev}.{kuu}.{aasta}";
+                    return tulemus;
                 }
             }
-            ikstring = ik.ToString();
-
-            if (ikstring.Length != 11)
-            {
-                Console.WriteLine("Viga! Isikukood peab olema 11-kohaline.");
-                return;
-            }
-            string sugu;
-            char esimene = ikstring[0];
-
-            if (esimene == '1' || esimene == '3' || esimene == '5')
-                sugu = "Mees";
-            else if (esimene == '2' || esimene == '4' || esimene == '6')
-                sugu = "Naine";
-            else
-                sugu = "Tundmatu";
-
-            string aasta = ikstring.Substring(1, 2);
-            string kuu = ikstring.Substring(3, 2);
-            string paev = ikstring.Substring(5, 2);
-
-            Console.WriteLine($"Oled {sugu}, sündinud {paev}.{kuu}.{aasta}");
         }
 
         public static void TaringuMang()

@@ -143,7 +143,7 @@ namespace praktilinetoopohikonstruktsioonid
             double maksuvaba = 0;
             double töötuskindlustus = 0;
             double kogumispension = 0;
-            if (brutopalk < 1200)
+            if (brutopalk > 1200)
             {
                 maksuvaba = 654;
             }

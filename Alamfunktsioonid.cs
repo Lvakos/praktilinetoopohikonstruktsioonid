@@ -9,12 +9,36 @@ namespace praktilinetoopohikonstruktsioonid
     {
         public static void KytuseKalkulaator()
         {
+            double teepikkus = 0;
+            double kütusekulu = 0;
+            double liitrihind = 0;
             Console.WriteLine("Sisesta läbitud teepikkus(km): ");
-            double teepikkus = double.Parse(Console.ReadLine());
+            try
+            {
+                teepikkus = double.Parse(Console.ReadLine());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
             Console.WriteLine("Sisesta kütusekulu 100km kohta (liitrit): ");
-            double kütusekulu = double.Parse(Console.ReadLine());
+            try
+            {
+                kütusekulu = double.Parse(Console.ReadLine());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
             Console.WriteLine("Sisesta kütuse liitri hind (€): ");
-            double liitrihind = double.Parse(Console.ReadLine());
+            try
+            {
+                liitrihind = double.Parse(Console.ReadLine());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
 
             double kütustkulus = ((kütusekulu/100) * teepikkus);
             double reisimaksumus = (kütustkulus * liitrihind);
@@ -36,7 +60,7 @@ namespace praktilinetoopohikonstruktsioonid
             double tulumaks = 0;
             double töötuskindlustus = 0;
             double kogumispension = 0;
-            if (bruttopalk > 654)
+            if (bruttopalk < 1200)
             {
                 tulumaks = (bruttopalk / 100) * 20;
             }
